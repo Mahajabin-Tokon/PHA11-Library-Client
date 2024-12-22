@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 
 const History = () => {
   const [books, setBooks] = useState([]);
@@ -17,6 +18,9 @@ const History = () => {
 
   return (
     <div className="max-w-6xl mx-auto my-2 px-2">
+      <Helmet>
+        <title>History Books</title>
+      </Helmet>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 py-5 ">
         {books.map((eachBook) => (
           <div className="card bg-base-100 shadow-xl">
@@ -29,9 +33,9 @@ const History = () => {
               <p>{eachBook.category}</p>
               <div className="card-actions justify-end">
                 <button
-                //   onClick={() => {
-                //     handleUpdate(eachBook._id);
-                //   }}
+                  //   onClick={() => {
+                  //     handleUpdate(eachBook._id);
+                  //   }}
                   className="btn"
                 >
                   Update
