@@ -22,8 +22,6 @@ const AllBooks = () => {
     navigate(`/updateBook/${id}`)
   };
 
-  console.log(books);
-
   return (
     <div>
       <Helmet>

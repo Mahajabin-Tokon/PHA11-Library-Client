@@ -9,6 +9,10 @@ import AddBook from "../Pages/AddBook";
 import BorrowedBooks from "../Pages/BorrowedBooks";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import UpdateBook from "../Pages/UpdateBook";
+import History from "../Pages/History";
+import Romance from "../Pages/Romance";
+import Business from "../Pages/Business";
+import Fantasy from "../Pages/Fantasy";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +23,22 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/history",
+        element: <History></History>,
+      },
+      {
+        path: "/romance",
+        element: <Romance></Romance>,
+      },
+      {
+        path: "/business",
+        element: <Business></Business>,
+      },
+      {
+        path: "/fantasy",
+        element: <Fantasy></Fantasy>,
       },
 
       {
