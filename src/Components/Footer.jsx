@@ -10,7 +10,7 @@ const Footer = () => {
       }`}
     >
       <nav className="grid grid-flow-col gap-4">
-        <a className="link link-hover">Contact Us at visapro@gmail.com</a>
+        <a className="link link-hover">Contact Us at bookish@gmail.com</a>
       </nav>
       <nav>
         <div className="grid grid-flow-col gap-4">
@@ -51,7 +51,7 @@ const Footer = () => {
       </nav>
       <aside>
         <p>
-          Copyright © {new Date().getFullYear()} - All right reserved by VisaPro
+          Copyright © {new Date().getFullYear()} - All right reserved by Bookish
         </p>
       </aside>
     </footer>

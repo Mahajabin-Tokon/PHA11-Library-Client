@@ -2,9 +2,8 @@ import React, { useContext } from "react";
 import Banner from "../Components/Banner";
 import Feedback from "../Components/Feedback";
 import Success from "../Components/Success";
-import LatestVisa from "../Components/LatestVisa";
-import { authContext } from "../AuthProvider/AuthProvider";
 import { Helmet } from "react-helmet";
+import BookCategories from "../Components/BookCategories";
 
 const Home = () => {
   return (
@@ -17,8 +16,8 @@ const Home = () => {
         <Banner></Banner>
       </div>
       <div className="max-w-6xl mx-auto my-2 px-2">
-        <div className="text-center text-4xl py-10">Latest Books</div>
-        <LatestVisa></LatestVisa>
+        <div className="text-center text-4xl py-10">Book Categories</div>
+        <BookCategories></BookCategories>
       </div>
       <div className="max-w-6xl mx-auto my-2 px-2">
         <div className="text-center text-4xl pb-10 ">Meet our Team</div>
