@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { authContext } from "../AuthProvider/AuthProvider";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddBook = () => {
   const { user } = useContext(authContext);
@@ -31,13 +32,20 @@ const AddBook = () => {
       bookContent,
     };
 
-    console.log(book);
     try {
-      const {data} = await axios.post(
-        `${import.meta.env.VITE_API_URL}/addBook`,
-        book
-      );
-      console.log(data);
+      const data = await axios
+        .post(`${import.meta.env.VITE_API_URL}/addBook`, book)
+        .then((data) => {
+          if (data.data.insertedId) {
+            Swal.fire({
+              title: "Success!",
+              text: "New Book Added Successfully!",
+              icon: "success",
+              confirmButtonText: "Cool",
+            });
+            //   navigate("/");
+          }
+        });
     } catch (err) {
       console.log(err);
     }
