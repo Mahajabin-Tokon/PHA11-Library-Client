@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useLocation, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateBook = () => {
   const [book, setBook] = useState([]);
@@ -19,8 +20,44 @@ const UpdateBook = () => {
     );
     setBook(data);
   };
-  const handleUpdateBook = () => {
-    console.log("hello");
+  const handleUpdateBook = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const coverImage = form.coverImage.value;
+    const title = form.title.value;
+    const authorName = form.authorName.value;
+    const category = form.category.value;
+    const rating = form.rating.value;
+
+    const updatedBook = {
+      coverImage,
+      title,
+      authorName,
+      category,
+      rating,
+    };
+
+    console.log(updatedBook)
+
+    try {
+      const data = await axios
+        .patch(`${import.meta.env.VITE_API_URL}/book/${id}`, updatedBook)
+        .then((data) => {
+          if (data.data.modifiedCount>0) {
+            Swal.fire({
+              title: "Success!",
+              text: "Book Updated Successfully!",
+              icon: "success",
+              confirmButtonText: "Cool",
+            });
+            
+            //   navigate("/");
+          }
+          console.log(data.data)
+        });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
