@@ -43,7 +43,7 @@ const History = () => {
                   }}
                   className="btn"
                 >
-                  Update
+                  Details
                 </button>
               </div>
             </div>

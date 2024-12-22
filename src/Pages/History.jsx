@@ -17,7 +17,7 @@ const History = () => {
     );
     setBooks(data);
   };
-  
+
   const handleDetails = (id) => {
     navigate(`/bookDetails/${id}`)
   };
@@ -44,7 +44,7 @@ const History = () => {
                     }}
                   className="btn"
                 >
-                  Update
+                  Details
                 </button>
               </div>
             </div>
