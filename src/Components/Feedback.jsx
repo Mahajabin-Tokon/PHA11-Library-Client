@@ -9,7 +9,7 @@ const Feedback = () => {
             <span>SY</span>
           </div>
         </div>
-        <p>Best website for applying visas</p>
+        <p>Best website for borrowing books</p>
         <div className="rating gap-1">
           <input
             type="radio"
@@ -79,7 +79,7 @@ const Feedback = () => {
             <span>SY</span>
           </div>
         </div>
-        <p>Easy to use, convenient and affordable</p>
+        <p>Easy to use and convenient</p>
         <div className="rating gap-1">
           <input
             type="radio"

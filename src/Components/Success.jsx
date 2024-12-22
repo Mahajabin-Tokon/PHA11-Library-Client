@@ -12,7 +12,7 @@ const Success = () => {
           alt="Consultant image"
         />
         <p className="font-bold">Alex Johnson</p>
-        <p>10 years experience in visa processing</p>
+        <p>Lauched the website for digital borrowing</p>
       </div>
       <div className="flex flex-col justify-center items-center border-2 py-4 rounded-3xl">
       <img
@@ -23,7 +23,7 @@ const Success = () => {
           alt="Consultant image"
         />
         <p className="font-bold">Sherlock Holmes</p>
-        <p>CEO, started company in 1990</p>
+        <p>Founder, started our Bookish library in 1995</p>
       </div>
       <div className="flex flex-col justify-center items-center border-2 py-4 rounded-3xl">
       <img
@@ -34,7 +34,7 @@ const Success = () => {
           alt="Consultant image"
         />
         <p className="font-bold">Sarah White</p>
-        <p>15 years experience in managing clients</p>
+        <p>Curated over 20 categories of books</p>
       </div>
     </div>
   );
