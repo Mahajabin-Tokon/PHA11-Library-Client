@@ -36,6 +36,8 @@ const History = () => {
               <h2 className="card-title">{eachBook.title}</h2>
               <p>{eachBook.authorName}</p>
               <p>{eachBook.category}</p>
+              <p>{eachBook.quantity}</p>
+              <p>{eachBook.rating}</p>
               <div className="card-actions justify-end">
                 <button
                   onClick={() => {
