@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { handleLogin, handleGoogleLogin, setEmailReference, loading } =
@@ -18,8 +19,16 @@ const Login = () => {
       .then((result) => {
         if (!location.state) {
           navigate("/");
+          Swal.fire({
+            title: "Successfully logged In!",
+            icon: "success",
+          });
         } else {
           navigate(location.state.from);
+          Swal.fire({
+            title: "Successfully logged In!",
+            icon: "success",
+          });
         }
       })
       .catch((error) => {
@@ -41,8 +50,16 @@ const Login = () => {
       .then((result) => {
         if (!location.state) {
           navigate("/");
+          Swal.fire({
+            title: "Successfully logged In!",
+            icon: "success",
+          });
         } else {
           navigate(location.state.from);
+          Swal.fire({
+            title: "Successfully logged In!",
+            icon: "success",
+          });
         }
       })
       .catch((error) => {

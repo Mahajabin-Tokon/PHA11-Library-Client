@@ -7,16 +7,15 @@ import { authContext } from "../AuthProvider/AuthProvider";
 
 
 const Home = () => {
-  const { isDark } = useContext(authContext);
   
   return (
-      <div className={`${isDark ? "bg-gray-800 text-gray-50" : ""}`}>
+      <div>
         <div className="max-w-6xl mx-auto px-2">
-          <div className="text-center text-4xl py-10">Welcome to A11</div>
+          <div className="text-center text-4xl py-10">Welcome to Bookish</div>
           <Banner></Banner>
         </div>
         <div className="max-w-6xl mx-auto my-2 px-2">
-          <div className="text-center text-4xl py-10">Latest Visas</div>
+          <div className="text-center text-4xl py-10">Latest Books</div>
           <LatestVisa></LatestVisa>
         </div>
         <div className="max-w-6xl mx-auto my-2 px-2">

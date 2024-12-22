@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [emailReference, setEmailReference] = useState("");
-  const [isDark, setIsDark] = useState(false);
+  
   const provider = new GoogleAuthProvider();
   const handleRegister = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -67,8 +67,7 @@ const AuthProvider = ({ children }) => {
     setUser,
     emailReference,
     setEmailReference,
-    isDark,
-    setIsDark,
+
   };
 
   return (

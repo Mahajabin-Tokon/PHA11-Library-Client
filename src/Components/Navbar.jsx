@@ -4,7 +4,7 @@ import { authContext } from "../AuthProvider/AuthProvider";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 
 const Navbar = () => {
-  const { user, handleLogout, isDark, setIsDark } = useContext(authContext);
+  const { user, handleLogout } = useContext(authContext);
   // const userFromFirebase = auth.currentUser
 
   const navlinks = (
@@ -13,24 +13,19 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/allVisas">All Visas</NavLink>
+        <NavLink to="/allBooks">All Books</NavLink>
       </li>
       <li>
-        <NavLink to="/addVisa">Add Visa</NavLink>
+        <NavLink to="/addBook">Add Book</NavLink>
       </li>
       <li>
-        <NavLink to="/myAddedVisas">My Added Visas</NavLink>
-      </li>
-      <li>
-        <NavLink to="/myVisaApplication">My Visa Application</NavLink>
+        <NavLink to="/borrowedBooks">Borrowed Books</NavLink>
       </li>
     </>
   );
   return (
     <div
-      className={`navbar  theme-controller ${
-        isDark ? "bg-gray-900 text-gray-50" : ""
-      }`}
+      className={`navbar  theme-controller`}
     >
       <div className="navbar-start">
         <div className="dropdown">
@@ -57,14 +52,14 @@ const Navbar = () => {
             {navlinks}
           </ul>
         </div>
-        <a className="btn btn-ghost text-4xl">VisaPro</a>
+        <a className="btn btn-ghost text-4xl">Bookish</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navlinks}</ul>
       </div>
       {user?.email ? (
         <div className="navbar-end gap-4">
-          <div className="dropdown dropdown-hover">
+          <div className="dropdown dropdown-hover dropdown-end">
             <div tabIndex={0} className="m-1">
               <img
                 referrerPolicy="no-referrer"
@@ -100,16 +95,6 @@ const Navbar = () => {
           </Link>
         </div>
       )}
-      <button
-        onClick={() => setIsDark(!isDark)}
-        className="bg-gray-200 p-3 rounded-full m-1"
-      >
-        {isDark ? (
-          <MdOutlineDarkMode className="text-black" />
-        ) : (
-          <MdOutlineLightMode />
-        )}
-      </button>
     </div>
   );
 };

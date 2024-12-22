@@ -10,7 +10,7 @@ const Banner = () => {
         <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
           <img src={bp1} className="md:w-1/2 h-96" />
           <p className="md:w-1/2 md:text-3xl p-5 md:pr-20">
-            This is one stop location to get the best service for adding and applying for visas
+            Discover endless adventures. Borrow, read, and return with ease.
           </p>
         </div>
         <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -26,7 +26,7 @@ const Banner = () => {
         <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
           <img src={bp2} className="md:w-1/2 h-96" />
           <p className="md:w-1/2 md:text-3xl p-5 md:pr-20">
-            It is super easy! Create an account and navigate to the add Visa Page and add a visa and then apply
+            From classics to new releases, borrow your favorite books today.
           </p>
         </div>
         <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -42,7 +42,8 @@ const Banner = () => {
         <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
           <img src={bp3} className="md:w-1/2 h-96" />
           <p className="md:w-1/2 md:text-3xl p-5 md:pr-20">
-            Not sure which visa to apply for, check out our latest visas below to see what is popular
+            Borrow smarter, read better. Explore our library, pick your
+            favorites!
           </p>
         </div>
         <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">

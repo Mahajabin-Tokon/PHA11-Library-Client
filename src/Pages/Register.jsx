@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { handleRegister, handleGoogleLogin, manageProfile, handleLogout } =
@@ -13,7 +14,12 @@ const Register = () => {
     const email = event.target.email.value;
     const image = event.target.image.value;
     const password = event.target.password.value;
-    if (name.length == 0 || email.length == 0 || image.length == 0 || password.length == 0) {
+    if (
+      name.length == 0 ||
+      email.length == 0 ||
+      image.length == 0 ||
+      password.length == 0
+    ) {
       setError("Please fill out all fields");
       return;
     }
@@ -34,7 +40,11 @@ const Register = () => {
       .then((result) => {
         manageProfile(name, image);
         navigate("/");
-        console.log(result)
+        Swal.fire({
+          title: "Successfully Registered!",
+          icon: "success",
+        });
+        console.log(result);
       })
       .catch((error) => {
         console.log(error);
@@ -45,6 +55,10 @@ const Register = () => {
     handleGoogleLogin()
       .then((result) => {
         navigate("/");
+        Swal.fire({
+          title: "Successfully Registered!",
+          icon: "success",
+        });
       })
       .catch((error) => {});
   };
