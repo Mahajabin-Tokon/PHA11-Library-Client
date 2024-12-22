@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import { useNavigate } from "react-router-dom";
 
 const AllBooks = () => {
   const [books, setBooks] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getAllBooks();
@@ -14,6 +16,10 @@ const AllBooks = () => {
       `${import.meta.env.VITE_API_URL}/allBooks`
     );
     setBooks(data);
+  };
+
+  const handleUpdate = (id) => {
+    navigate(`/updateBook/${id}`)
   };
 
   console.log(books);
@@ -28,17 +34,21 @@ const AllBooks = () => {
           {books.map((eachBook) => (
             <div className="card bg-base-100 shadow-xl">
               <figure>
-                <img
-                  src={eachBook.coverImage}
-                  alt="Cover Image"
-                />
+                <img src={eachBook.coverImage} alt="Cover Image" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{eachBook.title}</h2>
                 <p>{eachBook.authorName}</p>
                 <p>{eachBook.category}</p>
                 <div className="card-actions justify-end">
-                  <button className="btn">Update</button>
+                  <button
+                    onClick={() => {
+                      handleUpdate(eachBook._id);
+                    }}
+                    className="btn"
+                  >
+                    Update
+                  </button>
                 </div>
               </div>
             </div>
