@@ -13,6 +13,7 @@ import History from "../Pages/History";
 import Romance from "../Pages/Romance";
 import Business from "../Pages/Business";
 import Fantasy from "../Pages/Fantasy";
+import BookDetails from "../Pages/BookDetails";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/fantasy",
         element: <Fantasy></Fantasy>,
+      },
+      {
+        path: "/bookDetails/:id",
+        element: <BookDetails></BookDetails>,
       },
 
       {

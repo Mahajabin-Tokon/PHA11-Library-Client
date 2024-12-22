@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import { useNavigate } from "react-router-dom";
 
 const History = () => {
   const [books, setBooks] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     getAllBooks();
   }, []);
@@ -14,6 +15,10 @@ const History = () => {
       `${import.meta.env.VITE_API_URL}/booksByCategory?category=Business`
     );
     setBooks(data);
+  };
+
+  const handleDetails = (id) => {
+    navigate(`/bookDetails/${id}`);
   };
 
   return (
@@ -33,9 +38,9 @@ const History = () => {
               <p>{eachBook.category}</p>
               <div className="card-actions justify-end">
                 <button
-                  //   onClick={() => {
-                  //     handleUpdate(eachBook._id);
-                  //   }}
+                  onClick={() => {
+                    handleDetails(eachBook._id);
+                  }}
                   className="btn"
                 >
                   Update

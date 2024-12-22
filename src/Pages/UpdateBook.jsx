@@ -37,8 +37,6 @@ const UpdateBook = () => {
       rating,
     };
 
-    console.log(updatedBook)
-
     try {
       const data = await axios
         .patch(`${import.meta.env.VITE_API_URL}/book/${id}`, updatedBook)
@@ -53,7 +51,7 @@ const UpdateBook = () => {
             
             //   navigate("/");
           }
-          console.log(data.data)
+       
         });
     } catch (err) {
       console.log(err);
