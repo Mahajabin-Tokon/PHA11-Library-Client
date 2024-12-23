@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
+import ReactStars from "react-rating-stars-component";
 
 const AllBooks = () => {
   const [books, setBooks] = useState([]);
@@ -19,7 +20,7 @@ const AllBooks = () => {
   };
 
   const handleUpdate = (id) => {
-    navigate(`/updateBook/${id}`)
+    navigate(`/updateBook/${id}`);
   };
 
   return (
@@ -38,6 +39,11 @@ const AllBooks = () => {
                 <h2 className="card-title">{eachBook.title}</h2>
                 <p>{eachBook.authorName}</p>
                 <p>{eachBook.category}</p>
+                <ReactStars
+                  count={5}
+                  value={eachBook.rating}
+                  size={24}
+                />
                 <div className="card-actions justify-end">
                   <button
                     onClick={() => {

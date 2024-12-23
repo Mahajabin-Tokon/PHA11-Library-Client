@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
+import ReactStars from "react-rating-stars-component";
 
 const History = () => {
   const [books, setBooks] = useState([]);
@@ -37,7 +38,7 @@ const History = () => {
               <p>{eachBook.authorName}</p>
               <p>{eachBook.category}</p>
               <p>{eachBook.quantity}</p>
-              <p>{eachBook.rating}</p>
+              <ReactStars count={5} value={eachBook.rating} size={24} />
               <div className="card-actions justify-end">
                 <button
                   onClick={() => {
