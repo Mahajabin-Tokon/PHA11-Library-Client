@@ -65,7 +65,12 @@ const BookDetails = () => {
 
         });
     } catch (err) {
-      console.log(err);
+      document.getElementById("my_modal_1").close();
+      Swal.fire({
+        text: err?.response?.data,
+        icon: "error",
+        confirmButtonText: "Cool",
+      });
     }
   };
   return (
