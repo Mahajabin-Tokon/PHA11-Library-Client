@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import { authContext } from "../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { format } from "date-fns";
 
 const BorrowedBooks = () => {
   const { user } = useContext(authContext);
@@ -60,7 +61,7 @@ const BorrowedBooks = () => {
               <div className="card-body">
                 <h2 className="card-title">{eachBook.title}</h2>
                 <p>{eachBook.category}</p>
-                <p>{eachBook.borrowDate}</p>
+                <p>{format(new Date(eachBook.borrowDate), 'yyyy-MM-dd')}</p>
                 <p>{eachBook.returnDateInput}</p>
                 <div className="card-actions justify-end">
                   <button
