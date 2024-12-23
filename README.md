@@ -1,8 +1,25 @@
-# React + Vite
+# Project name:
+Bookish
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Purpose:
+To help users find different categories of books and borrow them
 
-Currently, two official plugins are available:
+# Live URL:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+# Key features:
+- Users can register their own profile and login
+- Users can add and save the the books of different categories
+- Users can borrow a book for a certain time 
+- Users can return the book
+
+# Npm packages used:
+1. sweetalert2
+2. firebase
+3. react
+4. react-dom
+5. react-icons
+6. react-router-dom
+7. axios
+8. date-fns
+9. react-rating-stars-component
