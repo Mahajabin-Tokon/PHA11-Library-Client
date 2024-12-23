@@ -34,13 +34,31 @@ const AllBooks = () => {
         <title>All Books</title>
       </Helmet>
       <div className="max-w-6xl mx-auto my-2 px-2">
-        <div className="flex flex-col md:flex-row justify-center items-center gap-2 px-4">
-          <button onClick={showAvailableBooks} className="btn">
-            Available Books
-          </button>
-          <button onClick={getAllBooks} className="btn">
-            All Books
-          </button>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-2">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-2">
+            <button onClick={showAvailableBooks} className="btn w-40">
+              Available Books
+            </button>
+            <button onClick={getAllBooks} className="btn w-40">
+              All Books
+            </button>
+          </div>
+          <div className="dropdown dropdown-end">
+            <div tabIndex={0} role="button" className="btn w-40 m-1">
+              Toggle View
+            </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+            >
+              <li>
+                <a>Card View</a>
+              </li>
+              <li>
+                <a>Table View</a>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 py-5 ">
           {books.map((eachBook) => (
