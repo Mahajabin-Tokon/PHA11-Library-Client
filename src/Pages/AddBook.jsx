@@ -13,7 +13,7 @@ const AddBook = () => {
     const userEmail = user?.email;
     const coverImage = form.coverImage.value;
     const title = form.title.value;
-    const quantity = form.quantity.value;
+    const quantity = parseFloat(form.quantity.value);
     const authorName = form.authorName.value;
     const category = form.category.value;
     const description = form.description.value;

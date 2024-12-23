@@ -60,8 +60,10 @@ const BookDetails = () => {
               icon: "success",
               confirmButtonText: "Cool",
             });
+            getBookByID();
             //   navigate("/");
           }
+
 
         });
     } catch (err) {
