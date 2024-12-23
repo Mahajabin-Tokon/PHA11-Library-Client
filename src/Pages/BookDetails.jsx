@@ -46,7 +46,15 @@ const BookDetails = () => {
     event.preventDefault();
     const form = event.target;
     const returnDateInput = form.returnDate.value;
-    const borrowedBook = { bookID: _id, email, borrowDate, returnDateInput };
+    const borrowedBook = {
+      bookID: _id,
+      email,
+      coverImage,
+      title,
+      category,
+      borrowDate,
+      returnDateInput,
+    };
 
     try {
       const data = await axios
@@ -63,8 +71,6 @@ const BookDetails = () => {
             getBookByID();
             //   navigate("/");
           }
-
-
         });
     } catch (err) {
       document.getElementById("my_modal_1").close();
