@@ -3,13 +3,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { authContext } from "../AuthProvider/AuthProvider";
 import { Helmet } from "react-helmet";
+import { format } from "date-fns";
+import Swal from "sweetalert2";
 
 const BookDetails = () => {
   const { user } = useContext(authContext);
   const { email } = user;
   const [book, setBook] = useState([]);
-  const [borrowDate, setBorrowDate] = useState("1");
-  const [returnDate, setReturnDate] = useState("2");
+  const [borrowDate, setBorrowDate] = useState(new Date());
+  // const [returnDate, setReturnDate] = useState("2");
   const { id } = useParams();
 
   const {
@@ -40,10 +42,31 @@ const BookDetails = () => {
     document.getElementById("my_modal_1").showModal();
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const borrowedBook = { _id, email, borrowDate, returnDate };
-    console.log(borrowedBook)
+    const form = event.target;
+    const returnDateInput = form.returnDate.value;
+    const borrowedBook = { bookID: _id, email, borrowDate, returnDateInput };
+
+    try {
+      const data = await axios
+        .post(`${import.meta.env.VITE_API_URL}/borrowBook`, borrowedBook)
+        .then((data) => {
+          document.getElementById("my_modal_1").close();
+          if (data.data.insertedId) {
+            Swal.fire({
+              title: "Success!",
+              text: "New Book Borrowed!",
+              icon: "success",
+              confirmButtonText: "Cool",
+            });
+            //   navigate("/");
+          }
+
+        });
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="flex justify-center items-center py-10 px-5">
@@ -106,7 +129,7 @@ const BookDetails = () => {
                 <p>Return Date</p>
                 <input
                   name="returnDate"
-                  type="text"
+                  type="date"
                   placeholder="Return Date"
                   className="input input-bordered w-full"
                 />
