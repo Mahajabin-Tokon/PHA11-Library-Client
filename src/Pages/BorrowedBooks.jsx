@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import { authContext } from "../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const BorrowedBooks = () => {
   const { user } = useContext(authContext);
@@ -20,8 +21,28 @@ const BorrowedBooks = () => {
     setBooks(data);
   };
 
-  const handleReturn = (id) => {
-    alert(id)
+  const handleReturn = async (id, bookID) => {
+    
+    // try {
+      const reqData = {id, bookID}
+      await axios
+        .post(`${import.meta.env.VITE_API_URL}/return`, reqData)
+        .then((data) => {
+          if (data.data.deletedCount > 0) {
+            Swal.fire({
+              title: "Success!",
+              text: "Book returned",
+              icon: "success",
+              confirmButtonText: "Cool",
+            });
+            //   navigate("/");
+          }
+          console.log(data.data)
+          getAllBooks();
+        });
+    // } catch (err) {
+    //   console.log(err)
+    // }
   };
 
   return (
@@ -44,7 +65,7 @@ const BorrowedBooks = () => {
                 <div className="card-actions justify-end">
                   <button
                     onClick={() => {
-                      handleReturn(eachBook._id);
+                      handleReturn(eachBook._id, eachBook.bookID);
                     }}
                     className="btn"
                   >
