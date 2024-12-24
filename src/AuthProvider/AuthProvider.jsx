@@ -50,7 +50,8 @@ const AuthProvider = ({ children }) => {
           `${import.meta.env.VITE_API_URL}/jwt`,
           {
             email: currentUser?.email,
-          }
+          },
+          { withCredentials: true }
         );
         console.log(data);
       } else {
