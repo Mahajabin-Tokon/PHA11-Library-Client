@@ -17,30 +17,30 @@ const BorrowedBooks = () => {
 
   const getAllBooks = async () => {
     const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/borrowedBooks/${user?.email}`
+      `${import.meta.env.VITE_API_URL}/borrowedBooks/${user?.email}`,
+      { withCredentials: true }
     );
     setBooks(data);
   };
 
   const handleReturn = async (id, bookID) => {
-    
     // try {
-      const reqData = {id, bookID}
-      await axios
-        .post(`${import.meta.env.VITE_API_URL}/return`, reqData)
-        .then((data) => {
-          if (data.data.deletedCount > 0) {
-            Swal.fire({
-              title: "Success!",
-              text: "Book returned",
-              icon: "success",
-              confirmButtonText: "Cool",
-            });
-            //   navigate("/");
-          }
-          console.log(data.data)
-          getAllBooks();
-        });
+    const reqData = { id, bookID };
+    await axios
+      .post(`${import.meta.env.VITE_API_URL}/return`, reqData)
+      .then((data) => {
+        if (data.data.deletedCount > 0) {
+          Swal.fire({
+            title: "Success!",
+            text: "Book returned",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+          //   navigate("/");
+        }
+        console.log(data.data);
+        getAllBooks();
+      });
     // } catch (err) {
     //   console.log(err)
     // }
@@ -61,7 +61,7 @@ const BorrowedBooks = () => {
               <div className="card-body">
                 <h2 className="card-title">{eachBook.title}</h2>
                 <p>{eachBook.category}</p>
-                <p>{format(new Date(eachBook.borrowDate), 'yyyy-MM-dd')}</p>
+                <p>{format(new Date(eachBook.borrowDate), "yyyy-MM-dd")}</p>
                 <p>{eachBook.returnDateInput}</p>
                 <div className="card-actions justify-end">
                   <button
