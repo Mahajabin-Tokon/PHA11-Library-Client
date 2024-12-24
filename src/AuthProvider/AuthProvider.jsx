@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
+import axios from "axios";
 
 export const authContext = createContext();
 
@@ -17,7 +18,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [emailReference, setEmailReference] = useState("");
-  
+
   const provider = new GoogleAuthProvider();
   const handleRegister = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -42,10 +43,16 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser?.email) {
         setUser(currentUser);
-        console.log(currentUser);
+        const { data } = await axios.post(
+          `${import.meta.env.VITE_API_URL}/jwt`,
+          {
+            email: currentUser?.email,
+          }
+        );
+        console.log(data);
       } else {
         setUser(null);
       }
@@ -67,7 +74,6 @@ const AuthProvider = ({ children }) => {
     setUser,
     emailReference,
     setEmailReference,
-
   };
 
   return (

@@ -2,6 +2,7 @@ import React, { useContext, useRef, useState } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Login = () => {
   const { handleLogin, handleGoogleLogin, setEmailReference, loading } =
@@ -67,9 +68,9 @@ const Login = () => {
       });
   };
 
-//   const handleForgetPassword = () => {
-//     setError("Password reset feature not requested");
-//   };
+  //   const handleForgetPassword = () => {
+  //     setError("Password reset feature not requested");
+  //   };
   return (
     <>
       <form onSubmit={handleSubmit} className="max-w-6xl mx-auto my-2 px-2">
@@ -102,9 +103,7 @@ const Login = () => {
             <div className="label">
               <span className="label-text-alt">
                 Forgot Password? Click{" "}
-                <span className="text-red-600">
-                  Here
-                </span>
+                <span className="text-red-600">Here</span>
               </span>
             </div>
           </label>
