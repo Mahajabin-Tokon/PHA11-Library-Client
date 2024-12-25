@@ -69,7 +69,10 @@ const BorrowedBooks = () => {
                   new Date(eachBook.borrowDate),
                   "yyyy-MM-dd"
                 )}`}</p>
-                <p>{`Return Date: ${eachBook.returnDateInput}`}</p>
+                <p>{`Return Date: ${format(
+                  new Date(eachBook.returnDateInput),
+                  "yyyy-MM-dd"
+                )}`}</p>
                 <div className="card-actions justify-end">
                   <button
                     onClick={() => {

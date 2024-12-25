@@ -3,8 +3,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { authContext } from "../AuthProvider/AuthProvider";
 import { Helmet } from "react-helmet";
-
+import ReactStars from "react-rating-stars-component";
 import Swal from "sweetalert2";
+import { compareAsc, format, parseISO } from "date-fns";
 
 const BookDetails = () => {
   const { user } = useContext(authContext);
@@ -45,7 +46,8 @@ const BookDetails = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
-    const returnDateInput = form.returnDate.value;
+    const returnDateInput = parseISO(form.returnDate.value);
+
     const borrowedBook = {
       bookID: _id,
       email,
@@ -55,6 +57,21 @@ const BookDetails = () => {
       borrowDate,
       returnDateInput,
     };
+
+    // console.log("Start")
+    // console.log("b", borrowDate)
+    // console.log("i", returnDateInput);
+
+    const result = compareAsc(returnDateInput, borrowDate);
+    if (result === -1) {
+      document.getElementById("my_modal_1").close();
+      Swal.fire({
+        text: "Return date must be greater than Borrow Date",
+        icon: "error",
+        confirmButtonText: "Okay",
+      });
+      return 
+    }
 
     try {
       const data = await axios
@@ -86,18 +103,18 @@ const BookDetails = () => {
       <Helmet>
         <title>Book Details</title>
       </Helmet>
-      <div className="card bg-base-100 w-1/2 shadow-xl">
+      <div className="card bg-base-100 fw-1/2 shadow-xl">
         <figure>
           <img src={coverImage} alt="Shoes" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{title}</h2>
-          <p>{quantity}</p>
-          <p>{authorName}</p>
-          <p>{category}</p>
-          <p>{description}</p>
-          <p>{rating}</p>
-          <p>{bookContent}</p>
+          {title && <h2 className="card-title">{`Title: ${title}`}</h2>}
+          {authorName && <p>{`Author: ${authorName}`}</p>}
+          <p>{`Category: ${category}`}</p>
+          <p>{`Quantity: ${quantity}`}</p>
+          <p>{`Description: ${description}`}</p>
+          <p>{`Book Contect: ${bookContent}`}</p>
+          <ReactStars count={5} value={rating} size={24} />
           <div className="card-actions justify-end">
             <button onClick={handleBorrow} className="btn">
               Borrow
