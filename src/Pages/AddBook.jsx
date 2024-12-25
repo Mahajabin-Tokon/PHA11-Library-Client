@@ -20,6 +20,15 @@ const AddBook = () => {
     const rating = parseFloat(form.rating.value);
     const bookContent = form.bookContent.value;
 
+    if (rating < 0 || rating > 5) {
+      Swal.fire({
+        text: "Rating must be between 1 to 5",
+        icon: "error",
+        confirmButtonText: "Okay",
+      });
+      return;
+    }
+
     const book = {
       userEmail,
       coverImage,

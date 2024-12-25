@@ -70,7 +70,7 @@ const BookDetails = () => {
         icon: "error",
         confirmButtonText: "Okay",
       });
-      return 
+      return;
     }
 
     try {
@@ -116,7 +116,11 @@ const BookDetails = () => {
           <p>{`Book Contect: ${bookContent}`}</p>
           <ReactStars count={5} value={rating} size={24} />
           <div className="card-actions justify-end">
-            <button onClick={handleBorrow} className="btn">
+            <button
+              disabled={book.quantity <= 0 ? true : false}
+              onClick={handleBorrow}
+              className="btn"
+            >
               Borrow
             </button>
           </div>
