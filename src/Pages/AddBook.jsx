@@ -3,9 +3,11 @@ import { Helmet } from "react-helmet";
 import { authContext } from "../AuthProvider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddBook = () => {
   const { user } = useContext(authContext);
+  const navigate = useNavigate()
 
   const handleAddBook = async (event) => {
     event.preventDefault();
@@ -52,7 +54,7 @@ const AddBook = () => {
               icon: "success",
               confirmButtonText: "Cool",
             });
-            //   navigate("/");
+            navigate("/allBooks");
           }
         });
     } catch (err) {

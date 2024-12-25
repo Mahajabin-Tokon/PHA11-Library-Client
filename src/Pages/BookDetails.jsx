@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { authContext } from "../AuthProvider/AuthProvider";
 import { Helmet } from "react-helmet";
 import ReactStars from "react-rating-stars-component";
@@ -14,6 +14,7 @@ const BookDetails = () => {
   const [borrowDate, setBorrowDate] = useState(new Date());
   // const [returnDate, setReturnDate] = useState("2");
   const { id } = useParams();
+  const navigate = useNavigate()
 
   const {
     _id,
@@ -86,7 +87,7 @@ const BookDetails = () => {
               confirmButtonText: "Cool",
             });
             getBookByID();
-            //   navigate("/");
+            navigate("/borrowedBooks");
           }
         });
     } catch (err) {

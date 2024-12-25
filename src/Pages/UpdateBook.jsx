@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateBook = () => {
   const [book, setBook] = useState([]);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { userEmail, coverImage, title, authorName, category, rating } = book;
 
@@ -41,17 +42,16 @@ const UpdateBook = () => {
       const data = await axios
         .patch(`${import.meta.env.VITE_API_URL}/book/${id}`, updatedBook)
         .then((data) => {
-          if (data.data.modifiedCount>0) {
+          if (data.data.modifiedCount > 0) {
             Swal.fire({
               title: "Success!",
               text: "Book Updated Successfully!",
               icon: "success",
               confirmButtonText: "Cool",
             });
-            
-            //   navigate("/");
+
+            navigate("/allBooks");
           }
-       
         });
     } catch (err) {
       console.log(err);
