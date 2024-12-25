@@ -5,7 +5,7 @@ Bookish
 To help users find different categories of books and borrow them
 
 # Live URL:
-
+https://assignment11-f7541.web.app/
 
 # Key features:
 - Users can register their own profile and login
@@ -23,3 +23,5 @@ To help users find different categories of books and borrow them
 7. axios
 8. date-fns
 9. react-rating-stars-component
+10. swiper
+11. motion
