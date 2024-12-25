@@ -22,6 +22,14 @@ const AddBook = () => {
     const rating = parseFloat(form.rating.value);
     const bookContent = form.bookContent.value;
 
+    if (quantity < 0) {
+      Swal.fire({
+        text: "Quantity must be greater than 0",
+        icon: "error",
+        confirmButtonText: "Okay",
+      });
+      return;
+    }
     if (rating < 0 || rating > 5) {
       Swal.fire({
         text: "Rating must be between 1 to 5",
