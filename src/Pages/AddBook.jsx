@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const AddBook = () => {
   const { user } = useContext(authContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleAddBook = async (event) => {
     event.preventDefault();
@@ -45,7 +45,9 @@ const AddBook = () => {
 
     try {
       const data = await axios
-        .post(`${import.meta.env.VITE_API_URL}/addBook`, book)
+        .post(`${import.meta.env.VITE_API_URL}/addBook`, book, {
+          withCredentials: true,
+        })
         .then((data) => {
           if (data.data.insertedId) {
             Swal.fire({

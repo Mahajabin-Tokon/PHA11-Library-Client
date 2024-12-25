@@ -16,7 +16,8 @@ const AllBooks = () => {
 
   const getAllBooks = async () => {
     const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/allBooks`
+      `${import.meta.env.VITE_API_URL}/allBooks`,
+      { withCredentials: true }
     );
     setBooks(data);
   };

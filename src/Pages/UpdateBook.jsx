@@ -40,7 +40,9 @@ const UpdateBook = () => {
 
     try {
       const data = await axios
-        .patch(`${import.meta.env.VITE_API_URL}/book/${id}`, updatedBook)
+        .patch(`${import.meta.env.VITE_API_URL}/book/${id}`, updatedBook, {
+          withCredentials: true,
+        })
         .then((data) => {
           if (data.data.modifiedCount > 0) {
             Swal.fire({
