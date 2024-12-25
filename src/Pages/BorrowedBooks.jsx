@@ -59,10 +59,17 @@ const BorrowedBooks = () => {
                 <img src={eachBook.coverImage} alt="Cover Image" />
               </figure>
               <div className="card-body">
-                <h2 className="card-title">{eachBook.title}</h2>
-                <p>{eachBook.category}</p>
-                <p>{format(new Date(eachBook.borrowDate), "yyyy-MM-dd")}</p>
-                <p>{eachBook.returnDateInput}</p>
+                {eachBook.title && (
+                  <h2 className="card-title">{`Title: ${eachBook.title}`}</h2>
+                )}
+                {eachBook.authorName && (
+                  <p>{`Author: ${eachBook.authorName}`}</p>
+                )}
+                <p>{`Borrow Date: ${format(
+                  new Date(eachBook.borrowDate),
+                  "yyyy-MM-dd"
+                )}`}</p>
+                <p>{`Return Date: ${eachBook.returnDateInput}`}</p>
                 <div className="card-actions justify-end">
                   <button
                     onClick={() => {

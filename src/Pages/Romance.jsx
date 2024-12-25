@@ -34,15 +34,13 @@ const History = () => {
               <img src={eachBook.coverImage} alt="Cover Image" />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">{eachBook.title}</h2>
-              <p>{eachBook.authorName}</p>
-              <p>{eachBook.category}</p>
-              <p>{eachBook.quantity}</p>
-              <ReactStars
-                                count={5}
-                                value={eachBook.rating}
-                                size={24}
-                              />
+              {eachBook.title && (
+                <h2 className="card-title">{`Title: ${eachBook.title}`}</h2>
+              )}
+              {eachBook.authorName && <p>{`Author: ${eachBook.authorName}`}</p>}
+              <p>{`Category: ${eachBook.category}`}</p>
+              <p>{`Quantity: ${eachBook.quantity}`}</p>
+              <ReactStars count={5} value={eachBook.rating} size={24} />
               <div className="card-actions justify-end">
                 <button
                   onClick={() => {
